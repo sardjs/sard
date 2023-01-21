@@ -37,7 +37,9 @@ function deepMapRoutes(routes) {
         path: '${path}',
         element: ${
           filePath
-            ? `<React.Suspense>{React.createElement(React.lazy(() => import('${filePath}')))}</React.Suspense>`
+            ? `<React.Suspense fallback={<Loading></Loading>}>` +
+              `{React.createElement(React.lazy(() => import('${filePath}')))}` +
+              `</React.Suspense>`
             : '<Outlet></Outlet>'
         },
         children: ${
@@ -70,6 +72,7 @@ async function transform(id) {
 
   const code = `import React from 'react'
     import { createHashRouter, Navigate, Outlet } from 'react-router-dom'
+    import Loading from './components/loading'
 
     const router = createHashRouter([
       {
