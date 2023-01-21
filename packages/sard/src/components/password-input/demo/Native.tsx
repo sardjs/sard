@@ -1,0 +1,16 @@
+/*
+### 结合原生键盘使用
+*/
+
+import { PasswordInput } from 'sard'
+import { useState } from 'react'
+
+export default function () {
+  const [value, setValue] = useState('')
+
+  return (
+    <>
+      <PasswordInput value={value} onChange={setValue} native />
+    </>
+  )
+}

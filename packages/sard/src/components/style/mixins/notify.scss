@@ -1,0 +1,5 @@
+@mixin notify-theme($color) {
+  // color: color-contrast($color);
+  color: $s-white;
+  background-color: $color;
+}

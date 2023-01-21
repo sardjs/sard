@@ -1,0 +1,41 @@
+{
+  "name": "sard",
+  "version": "1.0.0",
+  "description": "react移动端组件库",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/sard.es.js",
+  "main": "./dist/sard.cjs.js",
+  "exports": {
+    ".": {
+      "import": "./dist/sard.es.js",
+      "require": "./dist/sard.cjs.js"
+    }
+  },
+  "engines": {},
+  "scripts": {
+    "dev": "sard dev",
+    "build:site": "sard build:site",
+    "build": "sard build",
+    "preview": "sard preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ui",
+    "sard",
+    "react",
+    "mobile"
+  ],
+  "author": "sutras",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-icons": "^1.10.3",
+    "classnames": "^2.3.2",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "sard-cli": "*"
+  }
+}

@@ -1,0 +1,108 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-image-preview-header-padding-y: 15px !default;
+$s-image-preview-header-padding-x: 20px !default;
+$s-image-preview-header-text-shadow: 1px 1px 3px $s-black !default;
+$s-image-preview-header-color: $s-white !default;
+$s-image-preview-header-opacity: 0.85 !default;
+$s-image-preview-header-transition-duration: 0.3s !default;
+
+$s-image-preview-counter-font-size: $s-font-size !default;
+
+$s-image-preview-close-padding: 10px !default;
+$s-image-preview-close-font-size: $s-font-size-xl !default;
+
+$s-image-preview-mask-bg: $s-mask-dark !default;
+// #endvariables
+
+.s-image-preview-popup {
+  width: 100%;
+  height: 100%;
+}
+
+.s-image-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @at-root {
+    .s-image-preview-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: $s-image-preview-header-padding-y
+        $s-image-preview-header-padding-x;
+      text-shadow: $s-image-preview-header-text-shadow;
+      color: $s-image-preview-header-color;
+      opacity: $s-image-preview-header-opacity;
+      transition: $s-image-preview-header-transition-duration;
+      pointer-events: none;
+
+      @at-root {
+        .s-image-preview-counter {
+          font-size: $s-image-preview-counter-font-size;
+        }
+        .s-image-preview-close {
+          display: flex;
+          padding: $s-image-preview-close-padding;
+          margin-right: -$s-image-preview-close-padding;
+          font-size: $s-image-preview-close-font-size;
+          pointer-events: auto;
+          cursor: pointer;
+
+          .s-image-preview-header-hidden & {
+            pointer-events: none;
+          }
+        }
+      }
+    }
+    .s-image-preview-body {
+      position: relative;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+
+      @at-root {
+        .s-image-preview-swiper {
+          width: 100%;
+          height: 100%;
+
+          @at-root {
+            .s-image-preview-scale {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              transform-origin: center center;
+            }
+
+            @at-root {
+              .s-image-preview-img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.s-image-preview-mask {
+  background-color: $s-image-preview-mask-bg;
+}
+
+.s-image-preview-header-hidden {
+  opacity: 0;
+}

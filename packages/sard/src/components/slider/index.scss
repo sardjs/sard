@@ -1,0 +1,100 @@
+@use 'sass:math';
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-slider-track-main-axis-size: 100% !default;
+$s-slider-track-cross-axis-size: 2px !default;
+$s-slider-track-bg: $s-gray-300 !default;
+$s-slider-track-piece-transition-duration: $s-transition-duration !default;
+$s-slider-thumb-width: 24px !default;
+$s-slider-thumb-height: 24px !default;
+$s-slider-thumb-bg: $s-white !default;
+$s-slider-thumb-box-shadow: $s-box-shadow-sm !default;
+
+$s-slider-padding: math.div($s-slider-thumb-height, 2)
+  math.div($s-slider-thumb-width, 2);
+// #endvariables
+
+.s-slider {
+  position: relative;
+  box-sizing: border-box;
+  padding: $s-slider-padding;
+}
+.s-slider-track {
+  position: relative;
+  width: $s-slider-track-main-axis-size;
+  height: $s-slider-track-cross-axis-size;
+  background-color: $s-slider-track-bg;
+  cursor: pointer;
+}
+.s-slider-track-piece {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  background-color: $s-primary;
+  transition: all $s-slider-track-piece-transition-duration;
+
+  .s-slider-is-down & {
+    transition: none;
+  }
+}
+.s-slider-thumb-container {
+  position: absolute;
+  touch-action: none;
+
+  @at-root {
+    .s-slider-thumb {
+      width: $s-slider-thumb-width;
+      height: $s-slider-thumb-height;
+      border-radius: 50%;
+      background-color: $s-slider-thumb-bg;
+      box-shadow: $s-slider-thumb-box-shadow;
+      user-select: none;
+      cursor: grab;
+    }
+  }
+}
+.s-slider-thumb-container-start {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.s-slider-thumb-container-end {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+// # 垂直
+.s-slider-vertical {
+  display: inline-flex;
+  width: auto;
+  height: 100%;
+
+  .s-slider-track {
+    width: $s-slider-track-cross-axis-size;
+    height: $s-slider-track-main-axis-size;
+  }
+  .s-slider-track-piece {
+    width: 100%;
+    height: auto;
+  }
+  .s-slider-thumb-container-start {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .s-slider-thumb-container-end {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, 50%);
+  }
+}
+
+// # 禁用状态
+.s-slider-disabled {
+  @include disabled;
+}

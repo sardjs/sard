@@ -1,0 +1,70 @@
+@use 'sass:math';
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-radio-icon-font-size: 1.25em !default;
+$s-radio-icon-color: $s-gray-300 !default;
+$s-radio-icon-checked-color: $s-primary !default;
+$s-radio-icon-transition-duration: $s-transition-duration !default;
+
+$s-radio-label-margin-left: 0.5em !default;
+
+$s-radio-margin-left: 1em !default;
+$s-radio-margin-top: 1em !default;
+// #endvariables
+
+.s-radio {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+  @at-root {
+    .s-radio-icon {
+      font-size: $s-radio-icon-font-size;
+      line-height: 1;
+      color: $s-radio-icon-color;
+      transition: color $s-radio-icon-transition-duration;
+    }
+
+    .s-radio-label {
+      display: flex;
+      margin-left: $s-radio-label-margin-left;
+      user-select: auto;
+    }
+  }
+}
+
+// # 选中状态
+.s-radio-checked {
+  .s-radio-icon {
+    color: $s-radio-icon-checked-color;
+  }
+}
+
+// # 禁用状态
+.s-radio-disabled {
+  @include disabled;
+}
+
+// # 单选按钮组
+.s-radio-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+
+  &:not(.s-radio-group-vertical) .s-radio ~ .s-radio {
+    margin-left: $s-radio-margin-left;
+  }
+}
+.s-radio-group-vertical {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .s-radio ~ .s-radio {
+    margin-top: $s-radio-margin-top;
+  }
+}

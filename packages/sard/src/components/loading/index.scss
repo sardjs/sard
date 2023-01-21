@@ -1,0 +1,91 @@
+@use 'sass:math';
+@import '../style/functions.scss';
+@import '../style/variables.scss';
+
+// #variables
+$s-loading-spinner-width: 1em;
+$s-loading-spinner-height: 1em;
+$s-loading-spinner-min-width: 16px;
+$s-loading-spinner-min-height: 16px;
+$s-loading-spinner-animation-duration: 0.8s !default;
+$s-loading-spinner-border-width: 2px !default;
+
+$s-loading-scale-number: 12 !default;
+$s-loading-scale-width: 8% !default;
+$s-loading-scale-min-width: 1.5px !default;
+$s-loading-scale-height: 28% !default;
+$s-loading-scale-border-radius: 40% !default;
+
+$s-loading-text-margin-left: 0.5em !default;
+$s-loading-text-vertical-margin-top: 0.5em !default;
+
+// #endvariables
+
+.s-loading {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  &.s-loading-vertical {
+    flex-direction: column;
+  }
+}
+.s-loading-spinner {
+  position: relative;
+  box-sizing: border-box;
+  width: $s-loading-spinner-width;
+  height: $s-loading-spinner-height;
+  min-width: $s-loading-spinner-min-width;
+  min-height: $s-loading-spinner-min-height;
+  color: inherit;
+  animation: s-loading-rotate $s-loading-spinner-animation-duration linear
+    infinite;
+}
+.s-loading-spinner-border {
+  border: $s-loading-spinner-border-width solid transparent;
+  border-radius: 100%;
+  border-top-color: initial;
+}
+@keyframes s-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.s-loading-spinner-clock {
+  animation-timing-function: steps(#{$s-loading-scale-number});
+}
+.s-loading-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &:before {
+    display: flex;
+    width: $s-loading-scale-width;
+    min-width: $s-loading-scale-min-width;
+    height: $s-loading-scale-height;
+    margin: 0 auto;
+    border-radius: $s-loading-scale-border-radius;
+    content: '';
+    background-color: currentColor;
+  }
+}
+@for $i from 1 through $s-loading-scale-number {
+  .s-loading-scale:nth-child(#{$i}) {
+    opacity: tofixed(1 - math.div(1, $s-loading-scale-number) * ($i - 1), 6);
+    transform: rotate(#{math.div(360, $s-loading-scale-number) * $i}deg);
+  }
+}
+.s-loading-text {
+  margin-left: $s-loading-text-margin-left;
+  .s-loading-vertical & {
+    margin-left: 0;
+    margin-top: $s-loading-text-vertical-margin-top;
+  }
+}

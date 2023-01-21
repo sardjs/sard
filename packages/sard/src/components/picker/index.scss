@@ -1,0 +1,107 @@
+@use 'sass:math';
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-picker-height: 240px !default;
+$s-picker-item-height: 48px !default;
+$s-picker-item-font-size: $s-font-size !default;
+$s-picker-item-disabled-opacity: $s-disabled-opacity !default;
+
+$s-picker-mask-top-bg-image: linear-gradient(
+  to bottom,
+  rgba(255, 255, 255, 0.95),
+  rgba(255, 255, 255, 0.6)
+) !default;
+
+$s-picker-mask-bottom-bg-image: linear-gradient(
+  to top,
+  rgba(255, 255, 255, 0.95),
+  rgba(255, 255, 255, 0.6)
+) !default;
+
+$s-picker-focus-height: 56px !default;
+$s-picker-focus-border-color: rgba(0, 0, 0, 0.1) !default;
+
+// #endvariables
+
+.s-picker {
+  position: relative;
+  height: $s-picker-height;
+  overflow: hidden;
+  user-select: none;
+}
+
+.s-picker-column-group {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.s-picker-column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  height: 100%;
+  touch-action: pan-x;
+}
+
+.s-picker-mask {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  flex: auto;
+  pointer-events: none;
+
+  @at-root {
+    .s-picker-mask-top {
+      background-image: $s-picker-mask-top-bg-image;
+    }
+    .s-picker-mask-bottom {
+      background-image: $s-picker-mask-bottom-bg-image;
+    }
+  }
+}
+
+.s-picker-focus {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: $s-picker-focus-height;
+  flex: none;
+  align-items: center;
+  pointer-events: none;
+
+  @include border-vertical($s-picker-focus-border-color);
+}
+
+.s-picker-action-area {
+  width: 100%;
+  height: $s-picker-item-height;
+}
+
+.s-picker-item-group {
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.s-picker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: $s-picker-item-height;
+  overflow: hidden;
+  font-size: $s-picker-item-font-size;
+  @include ellipsis;
+  cursor: pointer;
+
+  @at-root {
+    .s-picker-item-disabled {
+      opacity: $s-picker-item-disabled-opacity;
+      cursor: not-allowed;
+    }
+  }
+}

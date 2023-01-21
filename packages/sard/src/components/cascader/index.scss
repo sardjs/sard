@@ -1,0 +1,57 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-cascader-label-unselected-color: $s-text-weak !default;
+
+$s-cascader-selected-color: $s-primary !default;
+
+$s-cascader-options-height: 320px !default;
+
+$s-cascader-option-padding-y: 10px !default;
+$s-cascader-option-padding-x: 16px !default;
+$s-cascader-option-font-size: $s-font-size !default;
+$s-cascader-option-active-bg: $s-bg-active !default;
+// #endvariables
+
+.s-cascader-label-unselected {
+  color: $s-cascader-label-unselected-color;
+}
+
+.s-cascader-options {
+  box-sizing: border-box;
+  height: $s-cascader-options-height;
+  overflow-y: auto;
+
+  @at-root {
+    .s-cascader-option {
+      display: flex;
+      font-size: $s-cascader-option-font-size;
+      padding: $s-cascader-option-padding-y $s-cascader-option-padding-x;
+
+      &:not(.s-cascader-option-disabled) {
+        cursor: pointer;
+
+        &:active {
+          background-color: $s-cascader-option-active-bg;
+        }
+      }
+
+      &.s-cascader-option-selected {
+        color: $s-cascader-selected-color;
+      }
+
+      @at-root {
+        // .s-cascader-option-label {
+        // }
+        .s-cascader-option-icon {
+          display: none;
+          margin-left: auto;
+
+          .s-cascader-option-selected & {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

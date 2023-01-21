@@ -1,0 +1,265 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-tab-label-height: 48px !default;
+$s-tab-label-font-size: $s-font-size !default;
+$s-tab-label-color: $s-gray-700 !default;
+$s-tab-label-active-color: $s-dark !default;
+
+$s-tab-auto-label-padding-x: 15px !default;
+
+$s-tab-card-label-active-bg: $s-white !default;
+$s-tab-label-line-width: 40px !default;
+$s-tab-label-line-height: 3px !default;
+$s-tab-label-line-bg: $s-primary !default;
+
+$s-tab-border-label-wrapper-border-radius: $s-border-radius-sm !default;
+$s-tab-border-label-wrapper-border-color: $s-primary !default;
+$s-tab-border-label-height: 28px !default;
+$s-tab-border-label-active-color: $s-white !default;
+
+$s-tab-pill-label-height: 28px !default;
+$s-tab-pill-label-border-radius: 9999px !default;
+$s-tab-pill-label-active-bg: $s-primary !default;
+$s-tab-pill-label-active-color: $s-white !default;
+
+$s-tab-vertical-label-height: 40px !default;
+$s-tab-vertical-label-padding-x: 15px !default;
+
+$s-tab-prepend-gap: 5px !default;
+$s-tab-append-gap: 5px !default;
+// #endvariables
+
+.s-tab {
+  position: relative;
+}
+
+.s-tab-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .s-tab-sticky & {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.s-tab-label-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.s-tab-label {
+  position: relative;
+  display: flex;
+  flex: 1;
+  height: $s-tab-label-height;
+  justify-content: center;
+  align-items: center;
+  font-size: $s-tab-label-font-size;
+  color: $s-tab-label-color;
+  cursor: pointer;
+
+  @at-root {
+    // # label-禁用状态
+    .s-tab-label-disabled {
+      @include disabled;
+    }
+
+    // # label-活动状态
+    .s-tab-label-active {
+      color: $s-tab-label-active-color;
+    }
+  }
+}
+
+.s-tab-label-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: $s-tab-label-line-width;
+  height: $s-tab-label-line-height;
+  background-color: $s-tab-label-line-bg;
+
+  .s-tab-label:not(.s-tab-label-active) & {
+    width: 0;
+  }
+}
+
+.s-tab-label-active .s-tab-label-line {
+  animation: s-tab-streak-horizontal 0.3s;
+
+  .s-tab-vertical & {
+    animation: s-tab-streak-vertical 0.3s;
+  }
+}
+
+@keyframes s-tab-streak-horizontal {
+  from {
+    width: 0;
+  }
+}
+@keyframes s-tab-streak-vertical {
+  from {
+    height: 0;
+  }
+}
+
+// 卡片标签
+.s-tab-card {
+  .s-tab-label {
+    &.s-tab-label-active {
+      background-color: $s-tab-card-label-active-bg;
+    }
+  }
+  .s-tab-label-line {
+    top: 0;
+    bottom: auto;
+    width: 100%;
+  }
+}
+
+// 边框标签
+.s-tab-border {
+  .s-tab-label-wrapper {
+    border: 1px solid currentColor;
+    border-radius: $s-tab-border-label-wrapper-border-radius;
+    color: $s-tab-border-label-wrapper-border-color;
+  }
+  .s-tab-label {
+    height: $s-tab-border-label-height;
+    color: inherit;
+    ~ .s-tab-label {
+      border-left: 1px solid currentColor;
+    }
+    &.s-tab-label-active {
+      background-color: currentColor;
+      .s-tab-label-text {
+        color: $s-tab-border-label-active-color;
+      }
+    }
+  }
+}
+
+// 胶囊
+.s-tab-pill {
+  .s-tab-label {
+    height: $s-tab-pill-label-height;
+    border-radius: $s-tab-pill-label-border-radius;
+    &.s-tab-label-active {
+      background-color: $s-tab-pill-label-active-bg;
+      .s-tab-label-text {
+        color: $s-tab-pill-label-active-color;
+      }
+    }
+  }
+}
+
+// 自动滚动
+.s-tab-auto {
+  .s-tab-label-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .s-tab-label {
+    flex: 0;
+    padding: 0 $s-tab-auto-label-padding-x;
+    white-space: nowrap;
+  }
+}
+
+// 插槽
+.s-tab-prepend,
+.s-tab-append {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.s-tab-prepend {
+  padding-right: $s-tab-prepend-gap;
+}
+.s-tab-append {
+  padding-left: $s-tab-append-gap;
+}
+
+// body
+.s-tab-body {
+  position: relative;
+}
+.s-tab-pane {
+  .s-tab:not(.s-tab-is-swiper):not(.s-tab-scrollspy) &:not(.s-tab-pane-active) {
+    display: none;
+  }
+}
+
+// 垂直
+.s-tab-vertical {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  .s-tab-header {
+    flex: none;
+    flex-direction: column;
+    align-self: flex-start;
+  }
+
+  .s-tab-label-wrapper {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  &.s-tab-auto {
+    .s-tab-label-wrapper {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  .s-tab-label {
+    flex: none;
+    padding: 0 15px;
+    height: $s-tab-vertical-label-height;
+  }
+
+  .s-tab-label-line {
+    right: 0;
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    width: $s-tab-label-line-height;
+    height: 100%;
+  }
+  &.s-tab-card .s-tab-label-line {
+    left: 0;
+    right: auto;
+  }
+
+  &.s-tab-border {
+    .s-tab-label {
+      ~ .s-tab-label {
+        border-left: none;
+        border-top: 1px solid currentColor;
+      }
+    }
+  }
+
+  .s-tab-body {
+    flex: 1;
+    align-self: stretch;
+  }
+}

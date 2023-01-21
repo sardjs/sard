@@ -1,0 +1,19 @@
+.s-row {
+  margin-bottom: 10px;
+}
+.grid-align .s-col:nth-child(1) .grid-box {
+  height: 30px;
+}
+.grid-align .s-col:nth-child(2) .grid-box {
+  height: 60px;
+}
+.grid-align .s-col:nth-child(3) .grid-box {
+  height: 90px;
+}
+.grid-box {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.s-col:nth-child(2n) .grid-box {
+  background-color: rgba(0, 0, 0, 0.15);
+}

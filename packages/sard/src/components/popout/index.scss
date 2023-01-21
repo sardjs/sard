@@ -1,0 +1,104 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-popout-border-top-radius: $s-border-radius-xl !default;
+$s-popout-bg: #fff !default;
+
+$s-popout-close-padding: 16px !default;
+$s-popout-close-font-size: $s-font-size-lg !default;
+
+$s-popout-header-compact-height: 44px !default;
+$s-popout-header-loose-height: 56px !default;
+$s-popout-header-loose-padding-x: $s-popout-close-padding * 2 +
+  $s-popout-close-font-size !default;
+
+$s-popout-title-max-width: 65% !default;
+$s-popout-title-font-size: 16px !default;
+
+$s-popout-footer-gap-y: 16px !default;
+$s-popout-footer-gap-x: 16px !default;
+
+$s-popout-button-gap: 16px !default;
+// #endvariables
+
+.s-popout {
+  border-top-left-radius: $s-popout-border-top-radius;
+  border-top-right-radius: $s-popout-border-top-radius;
+  background-color: #fff;
+
+  @at-root {
+    .s-popout-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+
+      @at-root {
+        .s-popout-title {
+          flex: 1 1 0;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          font-size: $s-popout-title-font-size;
+          @include ellipsis;
+        }
+
+        .s-popout-close {
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 100%;
+          padding: $s-popout-close-padding;
+          border: none;
+          border-top-right-radius: inherit;
+          font-size: $s-popout-close-font-size;
+          line-height: inherit;
+          cursor: pointer;
+        }
+      }
+
+      .s-popout-button {
+        height: 100%;
+      }
+      .s-popout-cancel {
+        margin-right: auto;
+        border-top-left-radius: inherit;
+      }
+      .s-popout-confirm {
+        margin-left: auto;
+        border-top-right-radius: inherit;
+      }
+    }
+
+    .s-popout-footer {
+      display: flex;
+      align-items: center;
+      padding: $s-popout-footer-gap-y $s-popout-footer-gap-x;
+
+      .s-popout-button {
+        flex: 1 1 0;
+
+        &:not(:first-child) {
+          margin-left: $s-popout-button-gap;
+        }
+      }
+    }
+  }
+}
+
+.s-popout-compact {
+  .s-popout-header {
+    height: $s-popout-header-compact-height;
+  }
+}
+
+.s-popout-loose {
+  .s-popout-header {
+    height: $s-popout-header-loose-height;
+    padding-left: $s-popout-header-loose-padding-x;
+    padding-right: $s-popout-header-loose-padding-x;
+  }
+}

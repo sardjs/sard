@@ -1,0 +1,67 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-result-icon-font-size: 64px !default;
+
+$s-result-success-color: $s-success !default;
+$s-result-info-color: $s-info !default;
+$s-result-warning-color: $s-warning !default;
+$s-result-error-color: $s-danger !default;
+$s-result-question-color: $s-primary !default;
+
+$s-result-title-margin-top: 15px !default;
+$s-result-title-font-size: $s-font-size-xl !default;
+
+$s-result-description-margin-top: 5px !default;
+$s-result-description-font-size: $s-font-size !default;
+$s-result-description-color: $s-muted !default;
+
+$s-result-extra-margin-top: 20px !default;
+// #endvariables
+
+.s-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  @at-root {
+    .s-result-icon {
+      font-size: $s-result-icon-font-size;
+      line-height: 1;
+      text-align: center;
+    }
+    .s-result-title {
+      margin-top: $s-result-title-margin-top;
+      font-size: $s-result-title-font-size;
+      text-align: center;
+    }
+    .s-result-description {
+      margin-top: $s-result-description-margin-top;
+      font-size: $s-result-description-font-size;
+      color: $s-result-description-color;
+      text-align: center;
+    }
+    .s-result-extra {
+      margin-top: $s-result-extra-margin-top;
+    }
+  }
+}
+
+// 状态类型
+.s-result-success .s-result-icon {
+  color: $s-result-success-color;
+}
+.s-result-info .s-result-icon {
+  color: $s-result-info-color;
+}
+.s-result-warning .s-result-icon {
+  color: $s-result-warning-color;
+}
+.s-result-error .s-result-icon {
+  color: $s-result-error-color;
+}
+.s-result-question .s-result-icon {
+  color: $s-result-question-color;
+}

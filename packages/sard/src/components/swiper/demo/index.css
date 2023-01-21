@@ -1,0 +1,22 @@
+.demo-swiper {
+  height: 200px;
+}
+.demo-swiper-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: normal;
+  text-align: center;
+  color: #333;
+  user-select: none;
+}
+.demo-swiper-item:nth-child(1) {
+  background-color: tomato;
+}
+.demo-swiper-item:nth-child(2) {
+  background-color: palegreen;
+}
+.demo-swiper-item:nth-child(3) {
+  background-color: deepskyblue;
+}

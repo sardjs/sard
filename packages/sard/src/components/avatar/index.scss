@@ -1,0 +1,57 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-avatar-width: 64px !default;
+$s-avatar-height: 64px !default;
+$s-avatar-font-size: 32px !default;
+$s-avatar-color: $s-gray-700 !default;
+$s-avatar-bg: $s-gray-300 !default;
+
+$s-avatar-square-border-radius: $s-border-radius !default;
+
+$s-avatar-group-avatar-border-color: $s-white !default;
+$s-avatar-group-avatar-gap: -16px !default;
+
+// #endvariables
+
+.s-avatar {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: $s-avatar-width;
+  height: $s-avatar-height;
+  vertical-align: middle;
+  font-size: $s-avatar-font-size;
+  color: $s-avatar-color;
+  background-color: $s-avatar-bg;
+}
+
+.s-avatar-circle {
+  border-radius: 50%;
+}
+
+.s-avatar-square {
+  border-radius: $s-avatar-square-border-radius;
+}
+
+.s-avatar-img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+}
+
+.s-avatar-group {
+  .s-avatar {
+    border: 1px solid $s-avatar-group-avatar-border-color;
+
+    &:not(:first-child) {
+      margin-left: $s-avatar-group-avatar-gap;
+    }
+  }
+
+  // .s-avatar-rest {
+  // }
+}

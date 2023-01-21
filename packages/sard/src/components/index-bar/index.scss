@@ -1,0 +1,90 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-index-bar-anchor-padding: 5px 16px !default;
+$s-index-bar-anchor-bg: $s-gray-100 !default;
+
+$s-index-bar-nav-z-index: 1010 !default;
+$s-index-bar-nav-padding: 0 5px !default;
+$s-index-bar-nav-item-font-size: 12px !default;
+$s-index-bar-nav-item-padding: 3px 5px !default;
+$s-index-bar-nav-item-color: $s-dark !default;
+$s-index-bar-nav-item-border-radius: $s-border-radius !default;
+$s-index-bar-nav-item-active-color: $s-white !default;
+$s-index-bar-nav-item-active-bg: $s-primary !default;
+
+$s-index-bar-hint-width: 50px !default;
+$s-index-bar-hint-height: 50px !default;
+$s-index-bar-hint-right: 40px !default;
+$s-index-bar-hint-border-radius: 100px 100px 0 100px !default;
+$s-index-bar-hint-bg: $s-mask !default;
+
+$s-index-bar-hint-text-font-size: 24px !default;
+$s-index-bar-hint-text-line-height: 1 !default;
+$s-index-bar-hint-text-font-weight: 700 !default;
+$s-index-bar-hint-text-color: $s-white !default;
+// #endvariables
+
+.s-index-bar-anchor {
+  position: sticky;
+  z-index: 1;
+  padding: $s-index-bar-anchor-padding;
+  background-color: $s-index-bar-anchor-bg;
+}
+.s-index-bar-content {
+  position: relative;
+  z-index: 0;
+}
+
+.s-index-bar-nav {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: $s-index-bar-nav-z-index;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  padding: $s-index-bar-nav-padding;
+  touch-action: pan-x;
+}
+.s-index-bar-nav-item {
+  font-size: $s-index-bar-nav-item-font-size;
+  line-height: 1;
+  padding: $s-index-bar-nav-item-padding;
+  text-align: center;
+  color: $s-index-bar-nav-item-color;
+  cursor: pointer;
+  border-radius: $s-index-bar-nav-item-border-radius;
+
+  &.s-index-bar-nav-item-active {
+    color: $s-index-bar-nav-item-active-color;
+    background-color: $s-index-bar-nav-item-active-bg;
+  }
+}
+
+.s-index-bar-hint {
+  position: absolute;
+  width: $s-index-bar-hint-width;
+  height: $s-index-bar-hint-height;
+  right: $s-index-bar-hint-right;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $s-index-bar-hint-border-radius;
+  background-color: $s-index-bar-hint-bg;
+  transform: translateY(-50%) rotate(-45deg);
+  pointer-events: none;
+
+  &:not(.s-index-bar-hint-visible) {
+    display: none;
+  }
+}
+
+.s-index-bar-hint-text {
+  font-size: $s-index-bar-hint-text-font-size;
+  line-height: $s-index-bar-hint-text-line-height;
+  font-weight: $s-index-bar-hint-text-font-weight;
+  transform: rotate(45deg);
+  color: $s-index-bar-hint-text-color;
+}

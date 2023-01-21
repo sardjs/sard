@@ -1,0 +1,39 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-form-item-padding-x: 15px !default;
+$s-form-item-padding-y: 15px !default;
+
+// #endvariables
+
+.s-form-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: $s-form-item-padding-y $s-form-item-padding-x;
+
+  @include border-bottom($s-border-color) {
+    left: $s-form-item-padding-x;
+    right: $s-form-item-padding-x;
+  }
+
+  @at-root {
+    .s-form-item-label {
+      flex: none;
+      width: 6.5em;
+    }
+
+    .s-form-item-content {
+      flex: 1;
+
+      @at-root {
+        .s-form-item-error {
+          margin-top: 5px;
+          font-size: $s-font-size-sm;
+          color: $s-danger;
+        }
+      }
+    }
+  }
+}

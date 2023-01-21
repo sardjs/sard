@@ -1,0 +1,128 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-input-padding-y: 6.5px !default;
+$s-input-padding-x: 16px !default;
+$s-input-border-radius: $s-border-radius !default;
+$s-input-border-color: $s-border-color !default;
+$s-input-active-bg: transparent !default;
+$s-input-transition-duration: $s-transition-duration !default;
+
+$s-input-focused-border-color: $s-primary !default;
+
+$s-input-control-font-size: $s-font-size !default;
+$s-input-control-line-height: 1.5 !default;
+$s-input-control-min-height: 1em * $s-input-control-line-height !default;
+
+$s-input-placeholder-color: $s-text-weak !default;
+
+$s-input-prepend-gap-right: 10px !default;
+$s-input-append-gap-left: 10px !default;
+
+$s-input-clear-margin-left: 0.5em !default;
+$s-input-clear-padding-x: 0.5em !default;
+$s-input-clear-color: $s-weak !default;
+// #endvariables
+
+.s-input {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  padding: $s-input-padding-y $s-input-padding-x;
+  border: 1px solid $s-input-border-color;
+  border-radius: $s-input-border-radius;
+  font-family: inherit;
+  font-size: $s-input-control-font-size;
+  line-height: $s-input-control-line-height;
+  transition: $s-input-transition-duration;
+
+  // &:active {
+  //   background-color: $s-input-active-bg;
+  // }
+
+  @at-root {
+    .s-input-prepend {
+      display: flex;
+      align-items: center;
+      flex: none;
+      margin-right: $s-input-prepend-gap-right;
+    }
+    .s-input-control {
+      all: inherit;
+      position: static;
+      display: flex;
+      flex: 1 1 0;
+      align-self: stretch;
+      width: 0;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+      min-height: $s-input-control-min-height;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      opacity: 1;
+      transform: none;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+
+      @at-root {
+        .s-input-placeholder {
+          color: $s-input-placeholder-color;
+        }
+      }
+    }
+    .s-input-append {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      margin-left: $s-input-append-gap-left;
+    }
+    .s-input-clear {
+      display: flex;
+      flex: none;
+      align-self: stretch;
+      justify-content: center;
+      align-items: center;
+      margin-left: $s-input-clear-margin-left;
+      margin-right: -$s-input-clear-padding-x;
+      padding: 0 $s-input-clear-padding-x;
+      color: $s-input-clear-color;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}
+
+// # 没有边框
+.s-input-no-border {
+  border: none;
+}
+
+// # 齐平的
+.s-input-flush {
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// # 焦点状态
+.s-input-focused {
+  border-color: $s-input-focused-border-color;
+}
+
+// # 禁用状态
+.s-input-disabled {
+  @include disabled;
+}
+
+// # 只读状态
+// .s-input-readonly { }

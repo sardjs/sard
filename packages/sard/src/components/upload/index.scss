@@ -1,0 +1,165 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-template: 1em;
+
+// #endvariables
+
+.s-upload {
+  display: inline-block;
+
+  @at-root {
+    .s-upload-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+}
+
+.s-upload-preview {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: $s-border-radius;
+  background-color: $s-gray-200;
+  cursor: pointer;
+
+  @at-root {
+    .s-upload-preview-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .s-upload-preview-file {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $s-gray-800;
+
+      @at-root {
+        .s-upload-preview-file-icon {
+          font-size: 20px;
+        }
+        .s-upload-preview-file-name {
+          box-sizing: border-box;
+          max-width: 100%;
+          padding: 0 5px;
+          margin-top: 5px;
+          font-size: 12px;
+          @include ellipsis;
+        }
+      }
+    }
+
+    .s-upload-preview-status {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $s-white;
+      background-color: $s-mask-dark;
+
+      @at-root {
+        .s-upload-preview-status-icon {
+          display: flex;
+          font-size: 20px;
+        }
+        .s-upload-preview-status-message {
+          box-sizing: border-box;
+          max-width: 100%;
+          padding: 0 5px;
+          margin-top: 5px;
+          font-size: 12px;
+          @include ellipsis;
+        }
+      }
+    }
+
+    .s-upload-preview-remove {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 20;
+      cursor: pointer;
+
+      @at-root {
+        .s-upload-preview-close {
+          margin-right: 2px;
+          margin-top: 2px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          font-size: 12px;
+          border-radius: 50%;
+          background-color: $s-gray-600;
+          color: $s-white;
+        }
+      }
+    }
+  }
+}
+
+.s-upload-select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  font-size: 24px;
+  color: $s-gray-600;
+  border-radius: $s-border-radius;
+  background-color: $s-gray-200;
+  cursor: pointer;
+
+  .s-upload:not(.s-upload-disabled) &:active {
+    background-color: $s-gray-300;
+  }
+
+  .s-upload-disabled & {
+    @include disabled;
+  }
+
+  @at-root {
+    .s-upload-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.s-upload-input-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+
+  .s-upload-disabled & {
+    @include disabled;
+  }
+}

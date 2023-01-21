@@ -1,0 +1,111 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-action-sheet-border-radius: $s-border-radius-xl !default;
+$s-action-sheet-bg: $s-white !default;
+
+$s-action-sheet-header-padding: 14px !default;
+$s-action-sheet-header-border-color: $s-gray-200;
+
+$s-action-sheet-title-font-size: $s-font-size-lg !default;
+
+$s-action-sheet-description-margin-top: 8px !default;
+$s-action-sheet-description-font-size: $s-font-size !default;
+$s-action-sheet-description-color: $s-muted !default;
+
+$s-action-sheet-item-padding: 14px !default;
+$s-action-sheet-item-border-color: $s-gray-200 !default;
+$s-action-sheet-item-bg: $s-white !default;
+$s-action-sheet-item-active-bg: $s-bg-active !default;
+
+$s-action-sheet-gap-bg: $s-bg-gap !default;
+$s-action-sheet-gap-height: 8px !default;
+
+$s-action-sheet-item-title-font-size: $s-font-size !default;
+
+$s-action-sheet-item-label-margin-top: 8px !default;
+$s-action-sheet-item-label-font-size: $s-font-size-sm !default;
+$s-action-sheet-item-label-color: $s-muted !default;
+
+$s-action-sheet-cancel-font-size: $s-font-size !default;
+$s-action-sheet-cancel-padding: 14px !default;
+$s-action-sheet-cancel-bg: $s-white !default;
+$s-action-sheet-cancel-active-bg: $s-bg-active !default;
+// #endvariables
+
+.s-action-sheet {
+  border-top-left-radius: $s-action-sheet-border-radius;
+  border-top-right-radius: $s-action-sheet-border-radius;
+  background-color: $s-action-sheet-bg;
+}
+.s-action-sheet-header {
+  position: relative;
+  padding: $s-action-sheet-header-padding;
+
+  @include border-bottom($s-action-sheet-header-border-color);
+
+  @at-root {
+    .s-action-sheet-title {
+      font-size: $s-action-sheet-title-font-size;
+      text-align: center;
+    }
+    .s-action-sheet-description {
+      font-size: $s-action-sheet-description-font-size;
+      text-align: center;
+      color: $s-action-sheet-description-color;
+
+      .s-action-sheet-title ~ & {
+        margin-top: $s-action-sheet-description-margin-top;
+      }
+    }
+  }
+}
+
+.s-action-sheet-gap {
+  height: $s-action-sheet-gap-height;
+  background-color: $s-action-sheet-gap-bg;
+}
+
+.s-action-sheet-item {
+  position: relative;
+  padding: $s-action-sheet-item-padding;
+  text-align: center;
+  cursor: pointer;
+  background-color: $s-action-sheet-item-bg;
+  &:active {
+    background-color: $s-action-sheet-item-active-bg;
+  }
+  .s-action-sheet.s-action-sheet-headless &:first-child {
+    border-top-left-radius: $s-action-sheet-border-radius;
+    border-top-right-radius: $s-action-sheet-border-radius;
+  }
+  &:not(:first-child) {
+    @include border-top($s-action-sheet-item-border-color);
+  }
+  &.s-action-sheet-item-disabled {
+    @include disabled-text;
+  }
+
+  @at-root {
+    .s-action-sheet-item-title {
+      font-size: $s-action-sheet-item-title-font-size;
+    }
+    .s-action-sheet-item-label {
+      margin-top: $s-action-sheet-item-label-margin-top;
+      font-size: $s-action-sheet-item-label-font-size;
+      color: $s-action-sheet-item-label-color;
+    }
+  }
+}
+
+.s-action-sheet-cancel {
+  font-size: $s-action-sheet-cancel-font-size;
+  padding: $s-action-sheet-cancel-padding;
+  text-align: center;
+  cursor: pointer;
+  background-color: $s-action-sheet-cancel-bg;
+  &:active {
+    background-color: $s-action-sheet-cancel-active-bg;
+  }
+}

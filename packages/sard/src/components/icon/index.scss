@@ -1,0 +1,39 @@
+@import '../style/variables.scss';
+@import './si-icons.scss';
+
+// #variables
+$s-icon-frame-border-color: rgba(0, 0, 0, 0.075) !default;
+$s-icon-frame-rounded-border-radius: $s-border-radius-sm !default;
+$s-icon-frame-color: $s-white !default;
+$s-icon-frame-bg: $s-gray-400 !default;
+// #endvariables
+
+.s-icon {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: inherit;
+  font-style: normal;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.s-icon-frame {
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  color: $s-icon-frame-color;
+  background-color: $s-icon-frame-bg;
+}
+.s-icon-frame-rounded {
+  border-radius: $s-icon-frame-rounded-border-radius;
+}
+.s-icon-frame-circle {
+  border-radius: 50%;
+}
+.s-icon-image {
+  display: block;
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}

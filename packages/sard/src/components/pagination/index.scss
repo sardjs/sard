@@ -1,0 +1,103 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-pagination-border-radius: $s-border-radius !default;
+
+$s-pagination-item-height: 40px !default;
+$s-pagination-item-min-width: 40px !default;
+$s-pagination-item-padding-x: 10px !default;
+$s-pagination-item-border-color: $s-border-color !default;
+$s-pagination-item-font-size: $s-font-size !default;
+$s-pagination-item-color: $s-primary !default;
+
+$s-pagination-item-active-color: $s-white !default;
+$s-pagination-item-active-border-color: $s-primary !default;
+$s-pagination-item-active-bg: $s-primary !default;
+
+$s-pagination-item-disabled-color: $s-weak !default;
+
+$s-pagination-ratio-height: 40px !default;
+$s-pagination-ratio-font-size: $s-font-size !default;
+$s-pagination-ratio-color: $s-text-body !default;
+
+// #endvariables
+
+.s-pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: $s-pagination-border-radius;
+  user-select: none;
+}
+
+.s-pagination-item {
+  box-sizing: border-box;
+  display: flex;
+  height: $s-pagination-item-height;
+  min-width: $s-pagination-item-min-width;
+  padding: 0 $s-pagination-item-padding-x;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $s-pagination-item-border-color;
+  font-size: $s-pagination-item-font-size;
+  white-space: nowrap;
+  color: $s-pagination-item-color;
+  cursor: pointer;
+  user-select: none;
+
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+
+  &:first-child {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+
+  &:last-child {
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+
+  .s-pagination-simple & {
+    border-radius: inherit;
+  }
+
+  &.s-pagination-item-active {
+    z-index: 3;
+    color: $s-pagination-item-active-color;
+    border-color: $s-pagination-item-active-border-color;
+    background-color: $s-pagination-item-active-bg;
+  }
+
+  &.s-pagination-item-disabled {
+    color: $s-pagination-item-disabled-color;
+    @include disabled;
+  }
+}
+
+.s-pagination-prev,
+.s-pagination-next {
+  flex: 1 0 auto;
+}
+
+.s-pagination-ratio {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: $s-pagination-ratio-height;
+  font-size: $s-pagination-ratio-font-size;
+  color: $s-pagination-ratio-color;
+}
+
+.s-pagination-simple {
+  .s-pagination-prev,
+  .s-pagination-next {
+    flex: 1;
+    padding: 0;
+  }
+}

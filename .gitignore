@@ -1,0 +1,9 @@
+# npm
+node_modules/
+package-lock.json
+
+# dist
+dist/
+
+# eslint
+.eslintcache

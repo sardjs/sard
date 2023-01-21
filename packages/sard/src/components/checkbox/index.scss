@@ -1,0 +1,70 @@
+@use 'sass:math';
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-checkbox-icon-font-size: 1.25em !default;
+$s-checkbox-icon-color: $s-gray-300 !default;
+$s-checkbox-icon-checked-color: $s-primary !default;
+$s-checkbox-icon-transition-duration: $s-transition-duration !default;
+
+$s-checkbox-label-margin-left: 0.5em !default;
+
+$s-checkbox-margin-left: 1em !default;
+$s-checkbox-margin-top: 1em !default;
+// #endvariables
+
+.s-checkbox {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+  @at-root {
+    .s-checkbox-icon {
+      font-size: $s-checkbox-icon-font-size;
+      line-height: 1;
+      color: $s-checkbox-icon-color;
+      transition: color $s-checkbox-icon-transition-duration;
+    }
+    .s-checkbox-label {
+      display: flex;
+      margin-left: $s-checkbox-label-margin-left;
+      user-select: auto;
+    }
+  }
+}
+
+// # 选中状态
+.s-checkbox-checked {
+  .s-checkbox-icon {
+    color: $s-checkbox-icon-checked-color;
+  }
+}
+
+// # 禁用状态
+.s-checkbox-disabled {
+  @include disabled;
+}
+
+// # 复选框组
+.s-checkbox-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+
+  &:not(.s-checkbox-group-vertical) .s-checkbox ~ .s-checkbox {
+    margin-left: $s-checkbox-margin-left;
+  }
+}
+.s-checkbox-group-vertical {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .s-checkbox ~ .s-checkbox {
+    margin-top: $s-checkbox-margin-top;
+  }
+}

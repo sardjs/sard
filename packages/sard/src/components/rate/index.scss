@@ -1,0 +1,48 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-rate-font-size: 20px !default;
+
+$s-rate-item-margin-left: 10px !default;
+
+$s-rate-star-void-color: $s-gray-400 !default;
+$s-rate-star-color: $s-warning !default;
+// #endvariables
+
+.s-rate {
+  display: inline-flex;
+  flex-direction: row;
+  white-space: nowrap;
+  font-size: $s-rate-font-size;
+  cursor: pointer;
+  touch-action: pan-y;
+
+  @at-root {
+    .s-rate-item {
+      position: relative;
+
+      ~ .s-rate-item {
+        margin-left: $s-rate-item-margin-left;
+      }
+
+      @at-root {
+        .s-rate-star-void {
+          position: relative;
+          color: $s-rate-star-void-color;
+        }
+        .s-rate-star {
+          position: absolute;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+          color: $s-rate-star-color;
+        }
+      }
+    }
+  }
+}
+
+.s-rate-disabled {
+  cursor: default;
+  touch-action: auto;
+}

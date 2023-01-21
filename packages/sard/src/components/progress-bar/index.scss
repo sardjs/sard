@@ -1,0 +1,56 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-progress-bar-height: 4px !default;
+$s-progress-bar-border-radius: $s-border-radius-sm !default;
+$s-progress-bar-bg: $s-gray-300 !default;
+
+$s-progress-bar-trail-color: $s-white !default;
+$s-progress-bar-trail-bg: $s-primary !default;
+$s-progress-bar-trail-font-size: 12px !default;
+$s-progress-bar-trail-transition-duration: 0.6s !default;
+$s-progress-bar-trail-striped-size: 16px !default;
+
+// #endvariables
+
+.s-progress-bar {
+  height: $s-progress-bar-height;
+  border-radius: $s-progress-bar-border-radius;
+  background-color: $s-progress-bar-bg;
+  overflow: hidden;
+}
+.s-progress-bar-trail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: $s-progress-bar-trail-font-size;
+  color: $s-progress-bar-trail-color;
+  background-color: $s-progress-bar-trail-bg;
+  transition: width $s-progress-bar-trail-transition-duration ease;
+
+  .s-progress-bar-striped & {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: $s-progress-bar-trail-striped-size
+      $s-progress-bar-trail-striped-size;
+  }
+
+  .s-progress-bar-animated & {
+    animation: 1s linear infinite s-progress-bar-trail-striped;
+  }
+}
+
+@keyframes s-progress-bar-trail-striped {
+  0% {
+    background-position-x: $s-progress-bar-trail-striped-size;
+  }
+}

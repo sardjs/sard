@@ -1,0 +1,44 @@
+{
+  "name": "sard-cli",
+  "version": "1.0.0",
+  "description": "react移动端组件库",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev -w sard",
+    "build:site": "npm run build:site -w sard",
+    "build": "npm run build -w sard",
+    "preview": "npm run preview -w sard",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "lint:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,scss,css,md}\"",
+    "lint:prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx,scss,css,md}\""
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx}": "eslint --fix",
+    "**/*.{ts,tsx,js,jsx,scss,css,md}": "prettier --write"
+  },
+  "keywords": [
+    "vite",
+    "react",
+    "sard",
+    "cli"
+  ],
+  "author": "sutras",
+  "license": "ISC",
+  "workspaces": [
+    "packages\\sard-cli",
+    "packages\\sard"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-plugin-react": "^7.32.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.3"
+  }
+}

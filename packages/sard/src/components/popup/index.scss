@@ -1,0 +1,79 @@
+@import '../style/variables.scss';
+
+// #variables
+$popup-z-index: 1100 !default;
+$popup-mask-bg: $s-mask !default;
+// #endvariables
+
+.s-popup {
+  position: fixed;
+  z-index: $popup-z-index;
+  pointer-events: none;
+  &:not(.s-popup-visible) {
+    display: none;
+  }
+}
+.s-popup-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $popup-mask-bg;
+  pointer-events: auto;
+  touch-action: none;
+
+  &.s-popup-mask-invisible {
+    background-color: transparent;
+  }
+  .s-popup-hiding & {
+    pointer-events: none;
+  }
+}
+.s-popup-dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  pointer-events: none;
+  &.s-popup-top {
+    align-items: flex-start;
+  }
+  &.s-popup-right {
+    justify-content: flex-end;
+  }
+  &.s-popup-bottom {
+    align-items: flex-end;
+  }
+  &.s-popup-left {
+    justify-content: flex-start;
+  }
+  &.s-popup-center,
+  &.s-popup-center-fade {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.s-popup-content {
+  box-sizing: border-box;
+  pointer-events: auto;
+  .s-popup-hiding & {
+    pointer-events: none;
+  }
+  .s-popup-top &,
+  .s-popup-bottom & {
+    width: 100%;
+  }
+  .s-popup-left &,
+  .s-popup-right & {
+    height: 100%;
+  }
+}
+
+.popup-lock-scroll {
+  overflow: hidden !important;
+}

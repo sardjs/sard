@@ -1,0 +1,9 @@
+.s-movable-area {
+  position: relative;
+}
+.s-movable-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: grab;
+}

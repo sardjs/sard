@@ -1,0 +1,61 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+$s-tabbar-z-index: 1050 !default;
+$s-tabbar-height: 50px !default;
+$s-tabbar-bg: $s-white !default;
+$s-tabbar-color: $s-muted !default;
+$s-tabbar-border-color: $s-border-color !default;
+
+$s-tabbar-item-ative-color: $s-primary !default;
+$s-tabbar-item-icon-margin-bottom: 5px !default;
+$s-tabbar-item-icon-font-size: 20px !default;
+$s-tabbar-item-text-font-size: 12px !default;
+$s-tabbar-item-text-line-height: 1 !default;
+
+// #endvariables
+
+.s-tabbar {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: $s-tabbar-height;
+  color: $s-tabbar-color;
+  background-color: $s-tabbar-bg;
+
+  @include border-top($s-tabbar-border-color);
+}
+
+.s-tabbar-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $s-tabbar-z-index;
+  width: 100%;
+}
+
+.s-tabbar-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+}
+.s-tabbar-item-active {
+  color: $s-tabbar-item-ative-color;
+}
+
+.s-tabbar-item-icon {
+  position: relative;
+  display: flex;
+  margin-bottom: $s-tabbar-item-icon-margin-bottom;
+  font-size: $s-tabbar-item-icon-font-size;
+}
+
+.s-tabbar-item-text {
+  font-size: $s-tabbar-item-text-font-size;
+  line-height: $s-tabbar-item-text-line-height;
+}

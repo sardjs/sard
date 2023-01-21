@@ -1,0 +1,39 @@
+@import '../style/variables.scss';
+
+// #variables
+$s-empty-icon-font-size: 64px !default;
+$s-empty-icon-color: $s-gray-300 !default;
+
+$s-empty-icon-margin-top: 15px !default;
+$s-empty-description-font-size: $s-font-size !default;
+$s-empty-description-color: $s-weak !default;
+$s-empty-extra-margin-top: 20px !default;
+// #endvariables
+
+.s-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @at-root {
+    .s-empty-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $s-empty-icon-font-size;
+      color: $s-empty-icon-color;
+    }
+
+    .s-empty-description {
+      margin-top: $s-empty-icon-margin-top;
+      font-size: $s-empty-description-font-size;
+      color: $s-empty-description-color;
+    }
+
+    .s-empty-extra {
+      margin-top: $s-empty-extra-margin-top;
+    }
+  }
+}
