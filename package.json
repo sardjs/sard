@@ -1,7 +1,7 @@
 {
   "name": "sard-cli",
   "version": "1.0.0",
-  "description": "react移动端组件库",
+  "description": "react移动端组件库与文档构建工具",
   "type": "module",
   "main": "index.js",
   "scripts": {
